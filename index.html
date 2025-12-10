@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SinfonIA - Presentación Ejecutiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="presentation-nav">
+        <button class="nav-btn nav-arrow" onclick="previousSlide()">‹</button>
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">8</span>
+        </div>
+        <button class="nav-btn nav-arrow" onclick="nextSlide()">›</button>
+        <div class="nav-divider"></div>
+        <button class="nav-btn" onclick="showSlide(1)">1</button>
+        <button class="nav-btn" onclick="showSlide(2)">2</button>
+        <button class="nav-btn" onclick="showSlide(3)">3</button>
+        <button class="nav-btn" onclick="showSlide(4)">4</button>
+        <button class="nav-btn" onclick="showSlide(5)">5</button>
+        <button class="nav-btn" onclick="showSlide(6)">6</button>
+        <button class="nav-btn" onclick="showSlide(7)">7</button>
+        <button class="nav-btn" onclick="showSlide(8)">8</button>
+        <button class="nav-btn" onclick="showSlide(9)">9</button>
+        <button class="nav-btn" onclick="showSlide(10)">10</button>
+    </nav>
+
+    <div class="slide-container">
+        <!-- ======================= SLIDE 1: TÍTULO ======================= -->
+        <div class="slide slide-1 active" id="slide-1">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="bg-element bg-element-3"></div>
+
+            <!-- Ondas decorativas animadas -->
+            <div class="sound-waves">
+                <div class="wave wave-1"></div>
+                <div class="wave wave-2"></div>
+                <div class="wave wave-3"></div>
+                <div class="wave wave-4"></div>
+                <div class="wave wave-5"></div>
+            </div>
+
+            <div class="main-content">
+                <div class="subtitle animate-fade-up">Presentamos</div>
+                <h1 class="title animate-scale-in">
+                    Sinfon<span class="highlight-ia">IA</span>
+                </h1>
+                <div class="sinfonia-logo-container animate-fade-up-delay">
+                    <div class="equalizer">
+                        <span></span><span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+                <h2 class="tagline animate-fade-up-delay-2">
+                    Sintonizando con la experiencia<br />
+                    de <span class="highlight">nuestros clientes</span>
+                </h2>
+                <p class="description animate-fade-up-delay-3">
+                    Plataforma Corporativa de Inteligencia Artificial<br />
+                    para análisis masivo de interacciones
+                </p>
+            </div>
+
+            <div class="footer-info">
+                <div class="presenter-info">Área GenAI • Entel</div>
+                <div class="date">Diciembre 2025</div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 2: PROPÓSITO ======================= -->
+        <div class="slide slide-2 content-slide" id="slide-2">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">02</div>
+                <h1 class="slide-title">Propósito Estratégico</h1>
+                <p class="slide-subtitle">
+                    El hub central de IA para transformar la experiencia del cliente
+                </p>
+            </div>
+
+            <div class="purpose-container">
+                <div class="purpose-main">
+                    <div class="purpose-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                    </div>
+                    <h3>SinfonIA busca convertirse en</h3>
+                    <p class="purpose-highlight">El Centro Neurálgico de IA en Entel</p>
+                </div>
+
+                <div class="objectives-grid">
+                    <div class="objective-card animate-on-scroll">
+                        <div class="objective-icon">🔄</div>
+                        <h4>Modernizar</h4>
+                        <p>El análisis de interacciones con clientes</p>
+                    </div>
+                    <div class="objective-card animate-on-scroll">
+                        <div class="objective-icon">🔍</div>
+                        <h4>Identificar</h4>
+                        <p>Causas raíz y fricciones en journeys</p>
+                    </div>
+                    <div class="objective-card animate-on-scroll">
+                        <div class="objective-icon">💡</div>
+                        <h4>Obtener</h4>
+                        <p>Insights accionables desde grandes volúmenes</p>
+                    </div>
+                    <div class="objective-card animate-on-scroll">
+                        <div class="objective-icon">⚡</div>
+                        <h4>Automatizar</h4>
+                        <p>Procesos que requerían trabajo manual intensivo</p>
+                    </div>
+                    <div class="objective-card animate-on-scroll">
+                        <div class="objective-icon">📊</div>
+                        <h4>Facilitar</h4>
+                        <p>Decisiones basadas en datos no estructurados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 3: STT ======================= -->
+        <div class="slide slide-3 content-slide producto-detalle-slide stt-slide" id="slide-3">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">03</div>
+                <h1 class="slide-title">
+                    <span class="producto-badge badge-green">SinfonIA</span>
+                    Speech to Text
+                </h1>
+                <p class="slide-subtitle">Convierte cada conversación en datos accionables</p>
+            </div>
+
+            <div class="producto-detalle-content">
+                <!-- Hero Visual -->
+                <div class="producto-hero">
+                    <div class="hero-flow animate-hero-flow">
+                        <div class="flow-stage">
+                            <div class="stage-icon">📞</div>
+                            <span>Llamada</span>
+                        </div>
+                        <div class="flow-arrow-svg">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L55,12 L45,18" stroke="#00d4aa" stroke-width="3"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="flow-stage stage-process">
+                            <div class="stage-icon">🎙️</div>
+                            <span>STT Engine</span>
+                        </div>
+                        <div class="flow-arrow-svg">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L55,12 L45,18" stroke="#00d4aa" stroke-width="3"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="flow-stage">
+                            <div class="stage-icon">📝</div>
+                            <span>Transcripción</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="producto-features">
+                    <div class="feature-card animate-feature" style="--delay: 0.2">
+                        <div class="feature-icon-box icon-green">⚡</div>
+                        <div class="feature-info">
+                            <h4>Velocidad</h4>
+                            <p>Procesamiento rápido de audios de cualquier duración</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card animate-feature" style="--delay: 0.3">
+                        <div class="feature-icon-box icon-green">💰</div>
+                        <div class="feature-info">
+                            <h4>Costo Optimizado</h4>
+                            <p>Modelo de cobro por minuto procesado, sin costos ocultos</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card animate-feature" style="--delay: 0.4">
+                        <div class="feature-icon-box icon-green">🔇</div>
+                        <div class="feature-info">
+                            <h4>Análisis de Silencio</h4>
+                            <p>Detectamos tiempos muertos y pausas en las conversaciones</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card animate-feature" style="--delay: 0.5">
+                        <div class="feature-icon-box icon-green">🔒</div>
+                        <div class="feature-info">
+                            <h4>Anonimización</h4>
+                            <p>Protección automática de datos sensibles (RUT, teléfonos, etc.)</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card animate-feature" style="--delay: 0.6">
+                        <div class="feature-icon-box icon-green">👥</div>
+                        <div class="feature-info">
+                            <h4>Diarización</h4>
+                            <p>Identificamos quién habla: agente vs cliente</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card animate-feature" style="--delay: 0.7">
+                        <div class="feature-icon-box icon-green">📊</div>
+                        <div class="feature-info">
+                            <h4>Metadata Rica</h4>
+                            <p>Duración, timestamps, confianza y más en cada transcripción</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="producto-cta animate-fade-up" style="--delay: 0.8">
+                    <p>🎯 La base de todo: <strong>sin transcripción no hay insights</strong></p>
+                    <span class="costo-badge">💰 Solo $0.0002 USD por minuto</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 4: INSIGHTS ======================= -->
+        <div class="slide slide-4 content-slide producto-detalle-slide insights-slide" id="slide-4">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">04</div>
+                <h1 class="slide-title">
+                    <span class="producto-badge badge-blue">SinfonIA</span>
+                    Insights
+                </h1>
+                <p class="slide-subtitle">Procesamiento masivo de preguntas con IA Generativa</p>
+            </div>
+
+            <div class="producto-detalle-content">
+                <!-- Hero Visual -->
+                <div class="producto-hero">
+                    <div class="hero-flow animate-hero-flow">
+                        <div class="flow-stage">
+                            <div class="stage-icon">📝</div>
+                            <span>Transcripciones</span>
+                        </div>
+                        <div class="flow-arrow-svg">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L55,12 L45,18" stroke="#002eff" stroke-width="3"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="flow-stage stage-process">
+                            <div class="stage-icon">🧠</div>
+                            <span>Motor IA</span>
+                        </div>
+                        <div class="flow-arrow-svg">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L55,12 L45,18" stroke="#002eff" stroke-width="3"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="flow-stage">
+                            <div class="stage-icon">💡</div>
+                            <span>Insights</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tipos de Preguntas -->
+                <div class="insights-tipos">
+                    <h3 class="section-subtitle animate-fade-up" style="--delay: 0.2">Tipos de análisis disponibles</h3>
+                    <div class="tipos-grid">
+                        <div class="tipo-card animate-tipo" style="--delay: 0.25">
+                            <div class="tipo-icon">✅</div>
+                            <h4>Binarias</h4>
+                            <p>Sí/No con razonamiento</p>
+                            <span class="tipo-ejemplo">"¿Se resolvió el problema?"</span>
+                        </div>
+                        <div class="tipo-card animate-tipo" style="--delay: 0.35">
+                            <div class="tipo-icon">📋</div>
+                            <h4>List Selector</h4>
+                            <p>Selección de opciones</p>
+                            <span class="tipo-ejemplo">"¿Cuál fue el motivo?"</span>
+                        </div>
+                        <div class="tipo-card animate-tipo" style="--delay: 0.45">
+                            <div class="tipo-icon">🏷️</div>
+                            <h4>Multicategoría</h4>
+                            <p>Múltiples etiquetas</p>
+                            <span class="tipo-ejemplo">"¿Qué temas se tocaron?"</span>
+                        </div>
+                        <div class="tipo-card animate-tipo" style="--delay: 0.55">
+                            <div class="tipo-icon">📝</div>
+                            <h4>Resumen</h4>
+                            <p>Síntesis automática</p>
+                            <span class="tipo-ejemplo">"Resume la llamada"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diferenciador -->
+                <div class="insights-diferenciador animate-fade-up" style="--delay: 0.7">
+                    <div class="diferenciador-box">
+                        <div class="diferenciador-icon">🔍</div>
+                        <div class="diferenciador-content">
+                            <h4>Con Razonamiento de IA</h4>
+                            <p>Cada respuesta incluye la <strong>explicación de por qué</strong> la IA llegó a esa
+                                conclusión, permitiendo auditar y confiar en los resultados</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="producto-cta animate-fade-up" style="--delay: 0.8">
+                    <p>🚀 Procesa <strong>miles de conversaciones</strong> con las preguntas que tu negocio necesita</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 5: REPORTERIA ======================= -->
+        <div class="slide slide-5 content-slide producto-detalle-slide reporteria-slide" id="slide-5">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">05</div>
+                <h1 class="slide-title">
+                    <span class="producto-badge badge-orange">SinfonIA</span>
+                    ReporterIA
+                </h1>
+                <p class="slide-subtitle">Información lista para usar en tus canales</p>
+            </div>
+
+            <div class="producto-detalle-content">
+                <!-- Hero Visual -->
+                <div class="producto-hero">
+                    <div class="hero-flow animate-hero-flow">
+                        <div class="flow-stage">
+                            <div class="stage-icon">💡</div>
+                            <span>Insights</span>
+                        </div>
+                        <div class="flow-arrow-svg">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L55,12 L45,18" stroke="#ff3d00" stroke-width="3"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="flow-stage stage-process">
+                            <div class="stage-icon">📊</div>
+                            <span>ReporterIA</span>
+                        </div>
+                        <div class="flow-arrow-svg">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L55,12 L45,18" stroke="#ff3d00" stroke-width="3"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="flow-stage">
+                            <div class="stage-icon">📱</div>
+                            <span>Tus Canales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Integraciones -->
+                <div class="reporteria-integraciones">
+                    <h3 class="section-subtitle animate-fade-up" style="--delay: 0.2">Lleva los insights donde los
+                        necesites</h3>
+                    <div class="integraciones-grid">
+                        <div class="integracion-card animate-integracion" style="--delay: 0.25">
+                            <div class="integracion-icon">📊</div>
+                            <h4>Dashboards</h4>
+                            <p>Visualizaciones en tiempo real</p>
+                        </div>
+                        <div class="integracion-card animate-integracion" style="--delay: 0.35">
+                            <div class="integracion-icon">📧</div>
+                            <h4>Reportes</h4>
+                            <p>Informes automáticos programados</p>
+                        </div>
+                        <div class="integracion-card animate-integracion" style="--delay: 0.45">
+                            <div class="integracion-icon">🔌</div>
+                            <h4>APIs</h4>
+                            <p>Integración con tus sistemas</p>
+                        </div>
+                        <div class="integracion-card animate-integracion" style="--delay: 0.55">
+                            <div class="integracion-icon">💬</div>
+                            <h4>Alertas</h4>
+                            <p>Notificaciones en tiempo real</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beneficios -->
+                <div class="reporteria-beneficios animate-fade-up" style="--delay: 0.65">
+                    <div class="beneficio-destacado">
+                        <span class="beneficio-emoji">✨</span>
+                        <div>
+                            <h4>Formato Friendly</h4>
+                            <p>Datos procesados y listos para <strong>consumir sin esfuerzo</strong> por cualquier área
+                            </p>
+                        </div>
+                    </div>
+                    <div class="beneficio-destacado">
+                        <span class="beneficio-emoji">🔄</span>
+                        <div>
+                            <h4>Actualización Continua</h4>
+                            <p>Información que se <strong>actualiza automáticamente</strong> con cada nuevo insight</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="producto-cta animate-fade-up" style="--delay: 0.8">
+                    <p>📈 De los datos al <strong>impacto en el negocio</strong>, sin fricciones</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 6: PROCESO SINFONIA ======================= -->
+        <div class="slide slide-6 content-slide proceso-slide-v2" id="slide-6">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="proceso-bg-gradient"></div>
+
+            <div class="header">
+                <div class="slide-number">06</div>
+                <h1 class="slide-title">El Viaje de tus Datos</h1>
+                <p class="slide-subtitle">De la conversación al insight en 3 pasos</p>
+            </div>
+
+            <div class="proceso-pipeline">
+                <!-- PASO 1: CAPTURA -->
+                <div class="pipeline-step step-1 animate-step" style="--delay: 0.2">
+                    <div class="step-header">
+                        <div class="step-badge step-badge-green">
+                            <span class="step-num">1</span>
+                        </div>
+                        <div class="step-title-box">
+                            <h3>Captura</h3>
+                            <span class="product-tag tag-green">Speech to Text</span>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-card">
+                            <div class="visual-icon">📞</div>
+                            <div class="visual-flow-arrow">
+                                <svg width="40" height="20" viewBox="0 0 40 20">
+                                    <path d="M0,10 L30,10 M25,5 L30,10 L25,15" stroke="#00d4aa" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+                            <div class="visual-icon">🎙️</div>
+                            <div class="visual-flow-arrow">
+                                <svg width="40" height="20" viewBox="0 0 40 20">
+                                    <path d="M0,10 L30,10 M25,5 L30,10 L25,15" stroke="#00d4aa" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+                            <div class="visual-icon">📝</div>
+                        </div>
+                        <div class="step-labels">
+                            <span>Audio</span>
+                            <span>Transcripción</span>
+                            <span>Texto</span>
+                        </div>
+                    </div>
+                    <div class="step-metric">
+                        <div class="metric-value green">100K</div>
+                        <div class="metric-label">llamadas/día</div>
+                    </div>
+                </div>
+
+                <!-- Conector animado -->
+                <div class="pipeline-connector animate-connector-v2" style="--delay: 0.5">
+                    <div class="connector-pipe">
+                        <div class="pipe-flow"></div>
+                    </div>
+                </div>
+
+                <!-- PASO 2: ANÁLISIS -->
+                <div class="pipeline-step step-2 animate-step" style="--delay: 0.6">
+                    <div class="step-header">
+                        <div class="step-badge step-badge-blue">
+                            <span class="step-num">2</span>
+                        </div>
+                        <div class="step-title-box">
+                            <h3>Análisis</h3>
+                            <span class="product-tag tag-blue">Insights</span>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-card">
+                            <div class="visual-icon">📝</div>
+                            <div class="visual-flow-arrow">
+                                <svg width="40" height="20" viewBox="0 0 40 20">
+                                    <path d="M0,10 L30,10 M25,5 L30,10 L25,15" stroke="#002eff" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+                            <div class="visual-icon">🧠</div>
+                            <div class="visual-flow-arrow">
+                                <svg width="40" height="20" viewBox="0 0 40 20">
+                                    <path d="M0,10 L30,10 M25,5 L30,10 L25,15" stroke="#002eff" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+                            <div class="visual-icon">💡</div>
+                        </div>
+                        <div class="step-labels">
+                            <span>Texto</span>
+                            <span>IA Generativa</span>
+                            <span>Insights</span>
+                        </div>
+                    </div>
+                    <div class="step-metric">
+                        <div class="metric-value blue">+40%</div>
+                        <div class="metric-label">eficiencia</div>
+                    </div>
+                </div>
+
+                <!-- Conector animado -->
+                <div class="pipeline-connector animate-connector-v2" style="--delay: 0.9">
+                    <div class="connector-pipe">
+                        <div class="pipe-flow"></div>
+                    </div>
+                </div>
+
+                <!-- PASO 3: ACCIÓN -->
+                <div class="pipeline-step step-3 animate-step" style="--delay: 1.0">
+                    <div class="step-header">
+                        <div class="step-badge step-badge-orange">
+                            <span class="step-num">3</span>
+                        </div>
+                        <div class="step-title-box">
+                            <h3>Acción</h3>
+                            <span class="product-tag tag-orange">ReporterIA</span>
+                        </div>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-card">
+                            <div class="visual-icon">💡</div>
+                            <div class="visual-flow-arrow">
+                                <svg width="40" height="20" viewBox="0 0 40 20">
+                                    <path d="M0,10 L30,10 M25,5 L30,10 L25,15" stroke="#ff3d00" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+                            <div class="visual-icon">🔌</div>
+                            <div class="visual-flow-arrow">
+                                <svg width="40" height="20" viewBox="0 0 40 20">
+                                    <path d="M0,10 L30,10 M25,5 L30,10 L25,15" stroke="#ff3d00" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+                            <div class="visual-icon">📊</div>
+                        </div>
+                        <div class="step-labels">
+                            <span>Insights</span>
+                            <span>APIs</span>
+                            <span>Decisiones</span>
+                        </div>
+                    </div>
+                    <div class="step-metric">
+                        <div class="metric-value orange">100%</div>
+                        <div class="metric-label">integrable</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resultado Final -->
+            <div class="proceso-final animate-final" style="--delay: 1.3">
+                <div class="final-glow"></div>
+                <div class="final-content">
+                    <span class="final-icon">🚀</span>
+                    <p>De la <strong>conversación</strong> a la <strong>acción</strong>, automáticamente</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 7: PERSONALIZACIÓN ======================= -->
+        <div class="slide slide-7 content-slide personalizacion-slide" id="slide-7">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">07</div>
+                <h1 class="slide-title">Personalización Total</h1>
+                <p class="slide-subtitle">Flujos de análisis diseñados para tu negocio</p>
+            </div>
+
+            <div class="personalizacion-content">
+                <!-- Concepto visual del pipeline -->
+                <div class="pipeline-visual">
+                    <div class="pipeline-intro animate-fade-up" style="--delay: 0.1">
+                        <h3>Crea flujos de análisis a tu medida</h3>
+                        <p>Define qué preguntas quieres responder y SinfonIA construye el análisis automáticamente</p>
+                    </div>
+
+                    <!-- Diagrama visual simplificado -->
+                    <div class="pipeline-diagram">
+                        <div class="diagram-flow">
+                            <!-- Input -->
+                            <div class="diagram-node node-input animate-node" style="--delay: 0.2">
+                                <div class="node-icon">💬</div>
+                                <span>Conversación</span>
+                            </div>
+
+                            <div class="diagram-arrow animate-arrow-flow" style="--delay: 0.3">
+                                <svg width="60" height="24" viewBox="0 0 60 24">
+                                    <path d="M0,12 L50,12 M45,6 L50,12 L45,18" stroke="#002eff" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+
+                            <!-- Pipeline Box -->
+                            <div class="diagram-pipeline animate-node" style="--delay: 0.4">
+                                <div class="pipeline-box">
+                                    <div class="pipeline-header">
+                                        <span class="pipeline-icon">⚡</span>
+                                        <strong>Tu Pipeline</strong>
+                                    </div>
+                                    <div class="pipeline-steps">
+                                        <div class="mini-step step-a">
+                                            <span>🎯</span>
+                                            <p>¿Se resolvió el problema?</p>
+                                        </div>
+                                        <div class="mini-step step-b">
+                                            <span>😊</span>
+                                            <p>¿Cliente satisfecho?</p>
+                                        </div>
+                                        <div class="mini-step step-c">
+                                            <span>📋</span>
+                                            <p>¿Siguió el protocolo?</p>
+                                        </div>
+                                        <div class="mini-step step-add">
+                                            <span>+</span>
+                                            <p>Agrega más...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="diagram-arrow animate-arrow-flow" style="--delay: 0.5">
+                                <svg width="60" height="24" viewBox="0 0 60 24">
+                                    <path d="M0,12 L50,12 M45,6 L50,12 L45,18" stroke="#00d4aa" stroke-width="2"
+                                        fill="none" />
+                                </svg>
+                            </div>
+
+                            <!-- Output -->
+                            <div class="diagram-node node-output animate-node" style="--delay: 0.6">
+                                <div class="node-icon">📊</div>
+                                <span>Resultados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beneficios -->
+                <div class="personalizacion-benefits">
+                    <div class="benefit-card animate-benefit" style="--delay: 0.7">
+                        <div class="benefit-icon">🔧</div>
+                        <h4>100% Configurable</h4>
+                        <p>Define las preguntas que importan para tu operación</p>
+                    </div>
+                    <div class="benefit-card animate-benefit" style="--delay: 0.8">
+                        <div class="benefit-icon">♾️</div>
+                        <h4>Flujos Ilimitados</h4>
+                        <p>Crea tantos análisis como necesites, sin restricciones</p>
+                    </div>
+                    <div class="benefit-card animate-benefit" style="--delay: 0.9">
+                        <div class="benefit-icon">🚀</div>
+                        <h4>Sin Código</h4>
+                        <p>Configura nuevos análisis sin depender de TI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 8: ARQUITECTURA ======================= -->
+
+        <div class="slide slide-8 content-slide" id="slide-8">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">08</div>
+                <h1 class="slide-title">Arquitectura en la Nube</h1>
+                <p class="slide-subtitle">Infraestructura escalable y moderna en AWS</p>
+            </div>
+
+            <div class="architecture-container">
+                <div class="aws-services">
+                    <h3 class="section-title">
+                        <span class="aws-badge">AWS</span> Componentes Clave
+                    </h3>
+                    <div class="services-grid">
+                        <div class="service-item animate-pop" style="--delay: 0">
+                            <div class="service-icon s3">S3</div>
+                            <span>Almacenamiento de audios y transcripciones</span>
+                        </div>
+                        <div class="service-item animate-pop" style="--delay: 0.1">
+                            <div class="service-icon ecs">ECS</div>
+                            <span>Procesamiento intensivo STT e Insights</span>
+                        </div>
+                        <div class="service-item animate-pop" style="--delay: 0.2">
+                            <div class="service-icon lambda">λ</div>
+                            <span>Lambdas / Step Functions</span>
+                        </div>
+                        <div class="service-item animate-pop" style="--delay: 0.3">
+                            <div class="service-icon rds">RDS</div>
+                            <span>Almacenamiento estructurado</span>
+                        </div>
+                        <div class="service-item animate-pop" style="--delay: 0.4">
+                            <div class="service-icon genai">AI</div>
+                            <span>DeepGenAI - Motor de análisis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="architecture-features">
+                    <h3 class="section-title">Características Arquitectónicas</h3>
+                    <div class="features-list">
+                        <div class="feature-item animate-slide-right" style="--delay: 0">
+                            <div class="feature-check">✓</div>
+                            <span>Modular, extensible y desacoplada</span>
+                        </div>
+                        <div class="feature-item animate-slide-right" style="--delay: 0.15">
+                            <div class="feature-check">✓</div>
+                            <span>Escalable horizontalmente según volumen</span>
+                        </div>
+                        <div class="feature-item animate-slide-right" style="--delay: 0.3">
+                            <div class="feature-check">✓</div>
+                            <span>Observabilidad integrada (logs, métricas, alertas)</span>
+                        </div>
+                        <div class="feature-item animate-slide-right" style="--delay: 0.45">
+                            <div class="feature-check">✓</div>
+                            <span>Múltiples casos de uso simultáneos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 9: CASOS DE USO ======================= -->
+        <div class="slide slide-9 content-slide" id="slide-9">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">09</div>
+                <h1 class="slide-title">Casos de Uso</h1>
+                <p class="slide-subtitle">Impacto transversal en la organización</p>
+            </div>
+
+            <div class="use-cases-container">
+                <div class="use-cases-grid">
+                    <div class="use-case-card animate-card-in" style="--delay: 0">
+                        <div class="use-case-icon">🏆</div>
+                        <h4>Mejor Agente B2B</h4>
+                    </div>
+                    <div class="use-case-card animate-card-in" style="--delay: 0.1">
+                        <div class="use-case-icon">🔍</div>
+                        <h4>Auditoría S2S</h4>
+                    </div>
+                    <div class="use-case-card animate-card-in" style="--delay: 0.2">
+                        <div class="use-case-icon">📋</div>
+                        <h4>Auditoría B2B</h4>
+                    </div>
+                    <div class="use-case-card animate-card-in" style="--delay: 0.3">
+                        <div class="use-case-icon">✅</div>
+                        <h4>Auditoría Calidad B2C</h4>
+                    </div>
+                    <div class="use-case-card animate-card-in" style="--delay: 0.4">
+                        <div class="use-case-icon">🎯</div>
+                        <h4>Auditoría CCI B2B</h4>
+                    </div>
+                    <div class="use-case-card animate-card-in" style="--delay: 0.5">
+                        <div class="use-case-icon">🔧</div>
+                        <h4>Diagnóstico de Fallas</h4>
+                    </div>
+                    <div class="use-case-card animate-card-in" style="--delay: 0.6">
+                        <div class="use-case-icon">📞</div>
+                        <h4>Auditoría Outbound B2C</h4>
+                    </div>
+                    <div class="use-case-card animate-card-in featured-case" style="--delay: 0.7">
+                        <div class="use-case-icon">🎙️</div>
+                        <h4>Análisis Voz del Cliente</h4>
+                        <span class="case-badge">Perú</span>
+                    </div>
+                </div>
+
+                <div class="impacts-section">
+                    <h3>Impactos Habilitados</h3>
+                    <div class="impacts-grid">
+                        <div class="impact-item animate-impact" style="--delay: 0.3">
+                            <span class="impact-bullet"></span>
+                            Comprensión profunda de la experiencia del cliente
+                        </div>
+                        <div class="impact-item animate-impact" style="--delay: 0.4">
+                            <span class="impact-bullet"></span>
+                            Detección temprana de fricciones o fallas
+                        </div>
+                        <div class="impact-item animate-impact" style="--delay: 0.5">
+                            <span class="impact-bullet"></span>
+                            Evaluación objetiva del desempeño de agentes
+                        </div>
+                        <div class="impact-item animate-impact" style="--delay: 0.6">
+                            <span class="impact-bullet"></span>
+                            Automatización de auditorías
+                        </div>
+                        <div class="impact-item animate-impact" style="--delay: 0.7">
+                            <span class="impact-bullet"></span>
+                            Insights transversales para gerencias
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 10: CASO DE ÉXITO PERÚ ======================= -->
+        <div class="slide slide-10 content-slide caso-exito-slide" id="slide-10">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+
+            <div class="header">
+                <div class="slide-number">10</div>
+                <h1 class="slide-title">Caso de Éxito</h1>
+                <p class="slide-subtitle">Análisis de Voz del Cliente - Perú</p>
+            </div>
+
+            <div class="caso-exito-container">
+                <!-- Hero comparison -->
+                <div class="caso-hero">
+                    <span class="caso-flag">🇵🇪</span>
+                    <h2>Transcripción y categorización de 900 horas diarias</h2>
+                </div>
+
+                <div class="caso-comparison">
+                    <div class="caso-box proveedor">
+                        <div class="caso-box-header">
+                            <span class="caso-icon">🏢</span>
+                            <span class="caso-label">Proveedor Externo</span>
+                        </div>
+                        <div class="caso-price">
+                            <span class="caso-currency">USD</span>
+                            <span class="caso-amount">$159,000</span>
+                            <span class="caso-period">/ año</span>
+                        </div>
+                    </div>
+
+                    <div class="caso-vs">
+                        <div class="vs-circle">VS</div>
+                    </div>
+
+                    <div class="caso-box sinfonia">
+                        <div class="caso-box-header">
+                            <span class="caso-icon">🎵</span>
+                            <span class="caso-label">SinfonIA</span>
+                        </div>
+                        <div class="caso-price">
+                            <span class="caso-currency">USD</span>
+                            <span class="caso-amount">$38,000</span>
+                            <span class="caso-period">/ año</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="caso-stats">
+                    <div class="caso-stat highlight-stat">
+                        <div class="stat-number">76%</div>
+                        <div class="stat-text">Ahorro Total</div>
+                    </div>
+                    <div class="caso-stat">
+                        <div class="stat-number">$121K</div>
+                        <div class="stat-text">USD ahorrados/año</div>
+                    </div>
+                    <div class="caso-stat">
+                        <div class="stat-number">900</div>
+                        <div class="stat-text">horas diarias procesadas</div>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="caso-cta">
+                    <p>✨ <strong>Mismo resultado, fracción del costo</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======================= SLIDE 11: CONCLUSIÓN ======================= -->
+        <div class="slide slide-11 content-slide conclusion-slide" id="slide-11">
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="bg-element bg-element-3"></div>
+
+            <div class="conclusion-content">
+                <div class="conclusion-header">
+                    <h1 class="conclusion-title animate-conclusion">
+                        Sinfon<span class="highlight-ia">IA</span>
+                    </h1>
+                    <p class="conclusion-subtitle animate-conclusion-delay">
+                        La fundación de Inteligencia Artificial en Entel
+                    </p>
+                </div>
+
+                <div class="conclusion-pillars">
+                    <div class="pillar animate-pillar" style="--delay: 0.2">
+                        <div class="pillar-icon">📊</div>
+                        <h4>Analiza</h4>
+                        <p>Masivamente interacciones con clientes</p>
+                    </div>
+                    <div class="pillar animate-pillar" style="--delay: 0.4">
+                        <div class="pillar-icon">💡</div>
+                        <h4>Obtiene</h4>
+                        <p>Insights confiables y accionables</p>
+                    </div>
+                    <div class="pillar animate-pillar" style="--delay: 0.6">
+                        <div class="pillar-icon">🔄</div>
+                        <h4>Transforma</h4>
+                        <p>Procesos operacionales y de experiencia</p>
+                    </div>
+                    <div class="pillar animate-pillar" style="--delay: 0.8">
+                        <div class="pillar-icon">🎯</div>
+                        <h4>Unifica</h4>
+                        <p>Voz y texto bajo una misma plataforma</p>
+                    </div>
+                </div>
+
+                <div class="conclusion-future animate-fade-up-slow">
+                    <h3>Oportunidades Estratégicas</h3>
+                    <div class="future-items">
+                        <span>Nuevas fuentes de información</span>
+                        <span>Monitoreo automatizado</span>
+                        <span>Feedback inmediato</span>
+                        <span>RAG & Recomendadores</span>
+                        <span>Monitores de Journey</span>
+                    </div>
+                </div>
+
+                <div class="conclusion-cta animate-cta">
+                    <p>Producto estratégico diseñado para <strong>escalar</strong>, <strong>integrarse</strong> y
+                        convertirse en la fundación de iniciativas avanzadas de IA</p>
+                </div>
+            </div>
+
+            <div class="footer-info">
+                <div class="presenter-info">Área GenAI • Entel</div>
+                <div class="date">Diciembre 2025</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 11;
+
+        function showSlide(n) {
+            // Ocultar todos los slides
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            // Mostrar el slide actual
+            document.getElementById(`slide-${n}`).classList.add('active');
+            currentSlide = n;
+
+            // Actualizar contador
+            document.getElementById('current-slide').textContent = n;
+
+            // Actualizar navegación activa
+            updateNavigation();
+
+            // Reiniciar animaciones del slide
+            restartAnimations(n);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 1) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function updateNavigation() {
+            document.querySelectorAll('.nav-btn').forEach((btn, index) => {
+                btn.classList.remove('active');
+            });
+        }
+
+        function restartAnimations(slideNum) {
+            const slide = document.getElementById(`slide-${slideNum}`);
+            const animatedElements = slide.querySelectorAll('[class*="animate-"]');
+
+            animatedElements.forEach(el => {
+                el.style.animation = 'none';
+                el.offsetHeight; // Trigger reflow
+                el.style.animation = null;
+            });
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (e.key >= '1' && e.key <= '9') {
+                showSlide(parseInt(e.key));
+            }
+        });
+
+        // Inicializar
+        document.getElementById('total-slides').textContent = totalSlides;
+    </script>
+</body>
+
+</html>
