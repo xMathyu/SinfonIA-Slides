@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SinfonIA - Versión para Imprimir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Estilos específicos para impresión */
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            color-adjust: exact !important;
+        }
+
+        body {
+            background: white !important;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .presentation-nav {
+            display: none !important;
+        }
+
+        .print-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .print-slide {
+            position: relative !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            width: 100% !important;
+            height: auto !important;
+            min-height: 650px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            page-break-after: always;
+            page-break-inside: avoid;
+            padding: 30px 40px !important;
+        }
+
+        .print-slide:last-child {
+            page-break-after: avoid;
+        }
+
+        /* Forzar visibilidad de todos los elementos */
+        .print-slide,
+        .print-slide * {
+            opacity: 1 !important;
+            visibility: visible !important;
+            animation: none !important;
+        }
+
+        /* Resetear transforms excepto casos especiales */
+        .print-slide *:not(.caso-box.sinfonia) {
+            transform: none !important;
+        }
+
+        .print-slide .caso-box.sinfonia {
+            transform: scale(1.05) !important;
+        }
+
+        /* Header de impresión */
+        .print-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #002eff;
+        }
+
+        .print-header h1 {
+            font-size: 2.5rem;
+            color: #1a202c;
+            margin: 0;
+        }
+
+        .print-header p {
+            color: #4a5568;
+            margin: 10px 0 0 0;
+        }
+
+        /* Footer de cada página */
+        .slide-label {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            background: rgba(0, 46, 255, 0.9);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1000;
+        }
+
+        /* ========== FIXES ESPECÍFICOS PARA CADA SLIDE ========== */
+
+        /* Slide 1 - Título */
+        .print-slide.slide-1 {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #f0f4f8 100%);
+        }
+
+        .print-slide.slide-1 .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .print-slide.slide-1 .sinfonia-logo-img {
+            max-width: 450px;
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .print-slide.slide-1 .title {
+            font-size: 5rem !important;
+        }
+
+        .print-slide.slide-1 .sound-waves {
+            display: none;
+        }
+
+        .print-slide.slide-1 .footer-info {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+        }
+
+        /* Slides de contenido general */
+        .print-slide.content-slide .header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .print-slide.content-slide .slide-number {
+            font-size: 1rem;
+            color: #00d4aa;
+            margin-bottom: 5px;
+        }
+
+        .print-slide.content-slide .slide-title {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .print-slide.content-slide .slide-subtitle {
+            font-size: 1rem;
+            color: #4a5568;
+        }
+
+        /* Slide 2 - Propósito */
+        .print-slide.slide-2 .purpose-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .print-slide.slide-2 .purpose-main {
+            text-align: center;
+        }
+
+        .print-slide.slide-2 .purpose-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .print-slide.slide-2 .pillar-card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Slides de productos (3, 4, 5) */
+        .print-slide.producto-detalle-slide {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .print-slide.producto-detalle-slide .producto-content {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            justify-content: space-evenly;
+            gap: 25px;
+        }
+
+        .print-slide.producto-detalle-slide .hero-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: nowrap;
+            padding: 20px 0;
+        }
+
+        .print-slide.producto-detalle-slide .flow-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .print-slide.producto-detalle-slide .flow-icon {
+            font-size: 2.5rem;
+        }
+
+        .print-slide.producto-detalle-slide .flow-arrow {
+            font-size: 2rem;
+            color: #00d4aa;
+        }
+
+        .print-slide.producto-detalle-slide .producto-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex: 1;
+            align-content: center;
+        }
+
+        .print-slide.producto-detalle-slide .feature-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .print-slide.producto-detalle-slide .feature-card h4 {
+            font-size: 1rem;
+            margin: 0 0 5px 0;
+            font-weight: 600;
+        }
+
+        .print-slide.producto-detalle-slide .feature-card p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: #4a5568;
+            line-height: 1.4;
+        }
+
+        .print-slide.producto-detalle-slide .feature-icon-box {
+            font-size: 1.8rem;
+            min-width: 50px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e8fff8 0%, #f0f9ff 100%);
+            border-radius: 12px;
+        }
+
+        /* STT bottom section con costo */
+        .print-slide.stt-slide .stt-bottom-section {
+            margin-top: auto;
+            padding: 25px;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e8fff8 100%);
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .print-slide.stt-slide .cost-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #00d4aa 0%, #00b894 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Slide 4 - Insights tipos grid */
+        .print-slide.insights-slide .tipos-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .print-slide.insights-slide .tipo-card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Slide 5 - ReporterIA integraciones */
+        .print-slide.reporteria-slide .integraciones-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .print-slide.reporteria-slide .integracion-card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Slide 6 - Pipeline */
+        .print-slide.proceso-slide-v2 .pipeline-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: nowrap;
+            margin-top: 40px;
+        }
+
+        .print-slide.proceso-slide-v2 .pipeline-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            min-width: 180px;
+        }
+
+        .print-slide.proceso-slide-v2 .pipeline-arrow {
+            flex-shrink: 0;
+        }
+
+        /* Slide 7 - Personalización */
+        .print-slide.personalizacion-slide .personalizacion-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .print-slide.personalizacion-slide .diagram-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .print-slide.personalizacion-slide .diagram-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .print-slide.personalizacion-slide .config-examples {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .print-slide.personalizacion-slide .mini-step {
+            font-size: 0.75rem;
+            padding: 8px;
+            background: #f7fafc;
+            border-radius: 8px;
+        }
+
+        .print-slide.personalizacion-slide .personalizacion-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .print-slide.personalizacion-slide .benefit-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Slide 8 - Arquitectura */
+        .print-slide.slide-8 .architecture-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        .print-slide.slide-8 .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .print-slide.slide-8 .service-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .print-slide.slide-8 .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        /* Slide 9 - Casos de uso */
+        .print-slide.slide-9 .use-cases-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .print-slide.slide-9 .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .print-slide.slide-9 .use-case-card {
+            padding: 20px 15px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .print-slide.slide-9 .use-case-card h4 {
+            font-size: 0.85rem;
+        }
+
+        .print-slide.slide-9 .impacts-section {
+            padding: 25px;
+            border-radius: 16px;
+        }
+
+        .print-slide.slide-9 .impacts-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .print-slide.slide-9 .impact-item {
+            font-size: 0.9rem;
+        }
+
+        /* Slide 10 - Caso de éxito */
+        .print-slide.caso-exito-slide .caso-exito-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .print-slide.caso-exito-slide .caso-hero {
+            text-align: center;
+        }
+
+        .print-slide.caso-exito-slide .caso-flag {
+            font-size: 3rem;
+        }
+
+        .print-slide.caso-exito-slide .caso-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .print-slide.caso-exito-slide .caso-box {
+            padding: 25px 40px;
+            border-radius: 16px;
+        }
+
+        .print-slide.caso-exito-slide .caso-amount {
+            font-size: 2.2rem;
+        }
+
+        .print-slide.caso-exito-slide .caso-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .print-slide.caso-exito-slide .caso-stat {
+            padding: 20px 30px;
+            text-align: center;
+        }
+
+        /* Slide 11 - Conclusión */
+        .print-slide.conclusion-slide {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .print-slide.conclusion-slide .conclusion-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .print-slide.conclusion-slide .conclusion-pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .print-slide.conclusion-slide .pillar {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Logo en todos los slides */
+        .print-slide .logo {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 80px;
+            height: auto;
+        }
+
+        /* Background elements - simplificar */
+        .print-slide .bg-element {
+            display: none !important;
+        }
+
+        /* ========== ESTILOS PARA IMPRESIÓN ========== */
+        @media print {
+            body {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .print-header {
+                display: none !important;
+            }
+
+            .print-container {
+                gap: 0 !important;
+            }
+
+            .print-slide {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                height: 100vh !important;
+                min-height: 100vh !important;
+                max-height: 100vh !important;
+                overflow: hidden !important;
+                border-radius: 0 !important;
+                padding: 25px 35px !important;
+                justify-content: flex-start !important;
+            }
+
+            /* Headers más compactos */
+            .print-slide .header {
+                margin-bottom: 15px !important;
+            }
+
+            .print-slide .slide-title {
+                font-size: 1.8rem !important;
+                margin-bottom: 5px !important;
+            }
+
+            .print-slide .slide-subtitle {
+                font-size: 0.95rem !important;
+            }
+
+            .print-slide .slide-number {
+                font-size: 0.9rem !important;
+                margin-bottom: 3px !important;
+            }
+
+            .slide-label {
+                display: none !important;
+            }
+
+            /* Hero flow SIEMPRE horizontal en print */
+            .hero-flow,
+            .print-slide .hero-flow {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 15px !important;
+                margin-bottom: 15px !important;
+            }
+
+            .hero-flow .flow-item,
+            .print-slide .hero-flow .flow-item {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+            }
+
+            .hero-flow .flow-arrow,
+            .print-slide .hero-flow .flow-arrow {
+                display: block !important;
+                font-size: 1.5rem !important;
+            }
+
+            /* Features grid */
+            .producto-features,
+            .print-slide .producto-features {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 10px !important;
+            }
+
+            .feature-card,
+            .print-slide .feature-card {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
+                padding: 10px !important;
+            }
+
+            .feature-card h4 {
+                font-size: 0.85rem !important;
+                margin-bottom: 3px !important;
+            }
+
+            .feature-card p {
+                font-size: 0.75rem !important;
+                line-height: 1.3 !important;
+            }
+
+            /* Producto CTA más compacto */
+            .producto-cta {
+                padding: 12px 20px !important;
+                margin-top: 10px !important;
+            }
+
+            .producto-cta p {
+                font-size: 0.95rem !important;
+                margin-bottom: 5px !important;
+            }
+
+            .costo-badge {
+                font-size: 0.85rem !important;
+                padding: 6px 15px !important;
+            }
+
+            /* Tipos grid */
+            .tipos-grid,
+            .print-slide .tipos-grid {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            /* Integraciones grid */
+            .integraciones-grid,
+            .print-slide .integraciones-grid {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            /* Pipeline */
+            .pipeline-visual,
+            .print-slide .pipeline-visual {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 15px !important;
+            }
+
+            .pipeline-step {
+                min-width: 150px !important;
+            }
+
+            /* Personalización */
+            .diagram-flow,
+            .print-slide .diagram-flow {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 15px !important;
+            }
+
+            .personalizacion-benefits,
+            .print-slide .personalizacion-benefits {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 15px !important;
+            }
+
+            /* Arquitectura */
+            .architecture-container,
+            .print-slide .architecture-container {
+                display: grid !important;
+                grid-template-columns: 1.5fr 1fr !important;
+                gap: 20px !important;
+            }
+
+            /* Casos de uso */
+            .use-cases-grid,
+            .print-slide .use-cases-grid {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 12px !important;
+            }
+
+            .impacts-grid,
+            .print-slide .impacts-grid {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 8px !important;
+            }
+
+            /* Caso de éxito */
+            .caso-comparison,
+            .print-slide .caso-comparison {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 25px !important;
+            }
+
+            .caso-stats,
+            .print-slide .caso-stats {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                gap: 30px !important;
+            }
+
+            /* Conclusión */
+            .conclusion-pillars,
+            .print-slide .conclusion-pillars {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 20px !important;
+            }
+
+            /* Purpose pillars */
+            .purpose-pillars,
+            .print-slide .purpose-pillars {
+                display: grid !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 15px !important;
+                flex: 1 !important;
+                align-content: center !important;
+            }
+
+            /* ============ AJUSTES DE CONTENIDO VERTICAL POR SLIDE ============ */
+
+            /* Slide 1 - Título */
+            .print-slide.slide-1 .main-content {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+
+            /* Slide 2 - Propósito */
+            .print-slide.slide-2 .purpose-container {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-evenly !important;
+            }
+
+            .print-slide.slide-2 .purpose-main {
+                flex: 0 0 auto !important;
+            }
+
+            /* Slide 3 - STT */
+            .print-slide.slide-3 .stt-simple-container {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-evenly !important;
+            }
+
+            /* Slide 4 - Insights */
+            .print-slide.slide-4 .tipos-grid {
+                flex: 1 !important;
+                align-content: center !important;
+            }
+
+            /* Slide 5 - ReporterIA */
+            .print-slide.slide-5 .integraciones-grid {
+                flex: 1 !important;
+                align-content: center !important;
+            }
+
+            /* Slide 6 - El Viaje de tus Datos */
+            .print-slide.slide-6 .proceso-v2-container {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-evenly !important;
+            }
+
+            .print-slide.slide-6 .pipeline-visual {
+                flex: 1 !important;
+                align-items: center !important;
+            }
+
+            /* Slide 7 - Personalización */
+            .print-slide.slide-7 .personalizacion-main-content {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-evenly !important;
+            }
+
+            .print-slide.slide-7 .diagram-flow {
+                flex: 0 0 auto !important;
+            }
+
+            .print-slide.slide-7 .personalizacion-benefits {
+                flex: 1 !important;
+                align-content: center !important;
+            }
+
+            /* Slide 8 - Arquitectura */
+            .print-slide.slide-8 .architecture-container {
+                flex: 1 !important;
+                align-content: center !important;
+            }
+
+            /* Slide 9 - Casos de Uso */
+            .print-slide.slide-9 .use-cases-grid {
+                flex: 0.6 !important;
+                align-content: start !important;
+            }
+
+            .print-slide.slide-9 .impacts-grid {
+                flex: 0.4 !important;
+                align-content: center !important;
+            }
+
+            /* Slide 10 - Caso de Éxito Perú */
+            .print-slide.slide-10 .caso-exito-container {
+                flex: 1 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-evenly !important;
+            }
+
+            .print-slide.slide-10 .caso-comparison {
+                flex: 0 0 auto !important;
+            }
+
+            .print-slide.slide-10 .caso-stats {
+                flex: 0 0 auto !important;
+                margin-top: auto !important;
+            }
+
+            /* Slide 11 - Conclusión */
+            .print-slide.slide-11 .conclusion-pillars {
+                flex: 1 !important;
+                align-content: center !important;
+            }
+
+            /* Esconder elementos de audio waves pero mantener equalizer */
+            .sound-waves {
+                display: none !important;
+            }
+
+            /* Mostrar el equalizer (símbolo de SinfonIA) */
+            .equalizer {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: flex-end !important;
+                gap: 4px !important;
+                height: 50px !important;
+                margin: 20px auto !important;
+            }
+
+            .equalizer span {
+                display: block !important;
+                width: 8px !important;
+                background: linear-gradient(to top, #002eff, #00d4aa) !important;
+                border-radius: 4px !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            /* Alturas variadas para simular el ecualizador */
+            .equalizer span:nth-child(1) {
+                height: 20px !important;
+            }
+
+            .equalizer span:nth-child(2) {
+                height: 35px !important;
+            }
+
+            .equalizer span:nth-child(3) {
+                height: 25px !important;
+            }
+
+            .equalizer span:nth-child(4) {
+                height: 45px !important;
+            }
+
+            .equalizer span:nth-child(5) {
+                height: 30px !important;
+            }
+
+            .equalizer span:nth-child(6) {
+                height: 40px !important;
+            }
+
+            .equalizer span:nth-child(7) {
+                height: 20px !important;
+            }
+
+            .equalizer span:nth-child(8) {
+                height: 35px !important;
+            }
+
+            .equalizer span:nth-child(9) {
+                height: 25px !important;
+            }
+
+            .equalizer span:nth-child(10) {
+                height: 15px !important;
+            }
+
+            /* Ajuste global de headers para dar más espacio al contenido */
+            .print-slide .header {
+                flex-shrink: 0 !important;
+                margin-bottom: 15px !important;
+            }
+
+            .print-slide .slide-title {
+                margin-bottom: 5px !important;
+            }
+
+            .print-slide .slide-subtitle {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        @page {
+            size: landscape;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="print-container">
+        <div class="print-header">
+            <h1>Sinfon<span style="color: #002eff;">IA</span></h1>
+            <p>Presentación Ejecutiva • Diciembre 2025</p>
+        </div>
+
+        <!-- SLIDE 1 -->
+        <div class="slide slide-1 print-slide">
+            <span class="slide-label">1 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="bg-element bg-element-3"></div>
+            <div class="sound-waves">
+                <div class="wave wave-1"></div>
+                <div class="wave wave-2"></div>
+                <div class="wave wave-3"></div>
+            </div>
+            <div class="main-content">
+                <div class="sinfonia-logo-container">
+                    <img src="logo-sinfonia.jpg" alt="SinfonIA Logo" class="sinfonia-logo-img"
+                        style="max-width: 400px; height: auto;" />
+                </div>
+                <h2 class="tagline">Sintonizando con la experiencia<br />de <span class="highlight">nuestros
+                        clientes</span></h2>
+                <p class="description">Plataforma Corporativa de Inteligencia Artificial<br />para análisis masivo de
+                    interacciones</p>
+            </div>
+            <div class="footer-info">
+                <div class="presenter-info">Área GenAI • Entel</div>
+                <div class="date">Diciembre 2025</div>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide slide-2 content-slide print-slide">
+            <span class="slide-label">2 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">02</div>
+                <h1 class="slide-title">Propósito Estratégico</h1>
+                <p class="slide-subtitle">El hub central de IA para transformar la experiencia del cliente</p>
+            </div>
+            <div class="purpose-container">
+                <div class="purpose-main">
+                    <div class="purpose-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v6l4 2" />
+                        </svg>
+                    </div>
+                    <h2>Transformar interacciones en <span class="highlight-text">inteligencia accionable</span></h2>
+                    <p class="purpose-description">
+                        Una plataforma única que convierte cada llamada, cada conversación y cada
+                        interacción en insights estratégicos para toda la organización.
+                    </p>
+                </div>
+                <div class="purpose-pillars">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🎯</div>
+                        <h3>Centralizado</h3>
+                        <p>Un único punto de acceso para todo el análisis de voz</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">⚡</div>
+                        <h3>Escalable</h3>
+                        <p>Procesa millones de interacciones sin límites</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">🔮</div>
+                        <h3>Inteligente</h3>
+                        <p>IA Generativa para insights profundos y automatizados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: STT -->
+        <div class="slide slide-3 content-slide producto-detalle-slide stt-slide print-slide">
+            <span class="slide-label">3 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">03</div>
+                <h1 class="slide-title"><span class="producto-badge badge-green">SinfonIA</span> STT</h1>
+                <p class="slide-subtitle">Speech-to-Text: Convierte audio en texto con precisión</p>
+            </div>
+            <div class="producto-content">
+                <div class="hero-flow">
+                    <div class="flow-item">
+                        <div class="flow-icon">📞</div>
+                        <span>Llamada</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item highlight-flow">
+                        <div class="flow-icon">🎵</div>
+                        <span>STT Engine</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">📝</div>
+                        <span>Transcripción</span>
+                    </div>
+                </div>
+                <div class="producto-features">
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-green">⚡</div>
+                        <div class="feature-info">
+                            <h4>Velocidad</h4>
+                            <p>Procesamiento rápido de audios de cualquier duración</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-green">💰</div>
+                        <div class="feature-info">
+                            <h4>Costo Optimizado</h4>
+                            <p>Modelo de cobro por minuto procesado, sin costos ocultos</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-green">🔇</div>
+                        <div class="feature-info">
+                            <h4>Análisis de Silencio</h4>
+                            <p>Detectamos tiempos muertos y pausas en las conversaciones</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-green">🔒</div>
+                        <div class="feature-info">
+                            <h4>Anonimización</h4>
+                            <p>Protección automática de datos sensibles</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-green">👥</div>
+                        <div class="feature-info">
+                            <h4>Diarización</h4>
+                            <p>Identificamos quién habla: agente vs cliente</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-green">📊</div>
+                        <div class="feature-info">
+                            <h4>Metadata Rica</h4>
+                            <p>Duración, timestamps, confianza en cada transcripción</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="producto-cta">
+                    <p>🎯 La base de todo: <strong>sin transcripción no hay insights</strong></p>
+                    <span class="costo-badge">💰 Solo $0.0002 USD por minuto</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: INSIGHTS -->
+        <div class="slide slide-4 content-slide producto-detalle-slide insights-slide print-slide">
+            <span class="slide-label">4 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">04</div>
+                <h1 class="slide-title"><span class="producto-badge badge-blue">SinfonIA</span> Insights</h1>
+                <p class="slide-subtitle">Procesamiento masivo de preguntas con IA Generativa</p>
+            </div>
+            <div class="producto-content">
+                <div class="hero-flow">
+                    <div class="flow-item">
+                        <div class="flow-icon">📝</div>
+                        <span>Transcripción</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item highlight-flow blue">
+                        <div class="flow-icon">🧠</div>
+                        <span>IA Generativa</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">💡</div>
+                        <span>Insights</span>
+                    </div>
+                </div>
+                <div class="section-subtitle">Tipos de Preguntas que Responde</div>
+                <div class="tipos-grid">
+                    <div class="tipo-card">
+                        <div class="tipo-icon">✅</div>
+                        <h4>Sí/No</h4>
+                        <p>¿Se identificó el agente?</p>
+                    </div>
+                    <div class="tipo-card">
+                        <div class="tipo-icon">📊</div>
+                        <h4>Escala</h4>
+                        <p>Nivel de empatía del 1 al 5</p>
+                    </div>
+                    <div class="tipo-card">
+                        <div class="tipo-icon">🏷️</div>
+                        <h4>Categorías</h4>
+                        <p>Motivo de la llamada</p>
+                    </div>
+                    <div class="tipo-card">
+                        <div class="tipo-icon">📝</div>
+                        <h4>Texto Libre</h4>
+                        <p>Resumen de la conversación</p>
+                    </div>
+                </div>
+                <div class="producto-cta">
+                    <p>🚀 <strong>Analiza miles de llamadas en minutos</strong>, no en semanas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: REPORTERIA -->
+        <div class="slide slide-5 content-slide producto-detalle-slide reporteria-slide print-slide">
+            <span class="slide-label">5 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">05</div>
+                <h1 class="slide-title"><span class="producto-badge badge-orange">SinfonIA</span> ReporterIA</h1>
+                <p class="slide-subtitle">Visualización y acceso a resultados en tiempo real</p>
+            </div>
+            <div class="producto-content">
+                <div class="hero-flow">
+                    <div class="flow-item">
+                        <div class="flow-icon">💡</div>
+                        <span>Insights</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item highlight-flow orange">
+                        <div class="flow-icon">📊</div>
+                        <span>ReporterIA</span>
+                    </div>
+                    <div class="flow-arrow">→</div>
+                    <div class="flow-item">
+                        <div class="flow-icon">👥</div>
+                        <span>Usuarios</span>
+                    </div>
+                </div>
+                <div class="section-subtitle">Integraciones Disponibles</div>
+                <div class="integraciones-grid">
+                    <div class="integracion-card">
+                        <div class="integracion-icon">🌐</div>
+                        <h4>Portal Web</h4>
+                        <p>Dashboards interactivos y reportes personalizados</p>
+                    </div>
+                    <div class="integracion-card">
+                        <div class="integracion-icon">📈</div>
+                        <h4>Power BI</h4>
+                        <p>Conexión directa para análisis avanzado</p>
+                    </div>
+                    <div class="integracion-card">
+                        <div class="integracion-icon">🔌</div>
+                        <h4>API REST</h4>
+                        <p>Integración con cualquier sistema</p>
+                    </div>
+                    <div class="integracion-card">
+                        <div class="integracion-icon">📤</div>
+                        <h4>Exports</h4>
+                        <p>Descarga en Excel, CSV, JSON</p>
+                    </div>
+                </div>
+                <div class="producto-cta">
+                    <p>📊 <strong>Los datos donde los necesitas</strong>, cuando los necesitas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6: EL VIAJE -->
+        <div class="slide slide-6 content-slide proceso-slide-v2 print-slide">
+            <span class="slide-label">6 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">06</div>
+                <h1 class="slide-title">El Viaje de tus Datos</h1>
+                <p class="slide-subtitle">De la llamada al insight en 3 pasos</p>
+            </div>
+            <div class="pipeline-visual">
+                <div class="pipeline-step step-1">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📞</div>
+                    <h3>Captura</h3>
+                    <p>Recibimos los audios desde cualquier fuente</p>
+                </div>
+                <div class="pipeline-arrow">
+                    <svg viewBox="0 0 50 20">
+                        <path d="M0,10 L40,10 M35,5 L45,10 L35,15" stroke="#00d4aa" stroke-width="2" fill="none" />
+                    </svg>
+                </div>
+                <div class="pipeline-step step-2">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🧠</div>
+                    <h3>Procesa</h3>
+                    <p>STT + IA Generativa analizan cada interacción</p>
+                </div>
+                <div class="pipeline-arrow">
+                    <svg viewBox="0 0 50 20">
+                        <path d="M0,10 L40,10 M35,5 L45,10 L35,15" stroke="#00d4aa" stroke-width="2" fill="none" />
+                    </svg>
+                </div>
+                <div class="pipeline-step step-3">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">📊</div>
+                    <h3>Entrega</h3>
+                    <p>Insights listos en dashboards y reportes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: PERSONALIZACIÓN -->
+        <div class="slide slide-7 content-slide personalizacion-slide print-slide">
+            <span class="slide-label">7 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">07</div>
+                <h1 class="slide-title">Personalización Total</h1>
+                <p class="slide-subtitle">Configura SinfonIA para responder las preguntas de tu negocio</p>
+            </div>
+            <div class="personalizacion-content">
+                <div class="personalizacion-diagram">
+                    <div class="diagram-flow">
+                        <div class="diagram-node node-input">
+                            <div class="node-icon">📝</div>
+                            <span>Transcripción</span>
+                        </div>
+                        <div class="diagram-arrow">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L50,12 L45,18" stroke="#002eff" stroke-width="2"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="diagram-node node-config">
+                            <div class="node-icon">⚙️</div>
+                            <span>Tu Configuración</span>
+                            <div class="config-examples">
+                                <div class="mini-step step-a"><span>🎯</span>
+                                    <p>¿Se resolvió?</p>
+                                </div>
+                                <div class="mini-step step-b"><span>😊</span>
+                                    <p>¿Cliente satisfecho?</p>
+                                </div>
+                                <div class="mini-step step-c"><span>📋</span>
+                                    <p>¿Siguió protocolo?</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="diagram-arrow">
+                            <svg width="60" height="24" viewBox="0 0 60 24">
+                                <path d="M0,12 L50,12 M45,6 L50,12 L45,18" stroke="#00d4aa" stroke-width="2"
+                                    fill="none" />
+                            </svg>
+                        </div>
+                        <div class="diagram-node node-output">
+                            <div class="node-icon">📊</div>
+                            <span>Resultados</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="personalizacion-benefits">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🔧</div>
+                        <h4>100% Configurable</h4>
+                        <p>Define las preguntas que importan</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">♾️</div>
+                        <h4>Flujos Ilimitados</h4>
+                        <p>Crea tantos análisis como necesites</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🚀</div>
+                        <h4>Sin Código</h4>
+                        <p>Configura sin depender de TI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: ARQUITECTURA -->
+        <div class="slide slide-8 content-slide print-slide">
+            <span class="slide-label">8 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">08</div>
+                <h1 class="slide-title">Arquitectura en la Nube</h1>
+                <p class="slide-subtitle">Infraestructura escalable y moderna en AWS</p>
+            </div>
+            <div class="architecture-container">
+                <div class="aws-services">
+                    <h3 class="section-title"><span class="aws-badge">AWS</span> Componentes Clave</h3>
+                    <div class="services-grid">
+                        <div class="service-item">
+                            <div class="service-icon s3">S3</div><span>Almacenamiento de audios</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon ecs">ECS</div><span>Procesamiento STT e Insights</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon lambda">λ</div><span>Lambdas / Step Functions</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon rds">RDS</div><span>Almacenamiento estructurado</span>
+                        </div>
+                        <div class="service-item">
+                            <div class="service-icon genai">AI</div><span>DeepGenAI - Motor de análisis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="architecture-features">
+                    <h3 class="section-title">Características</h3>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <div class="feature-check">✓</div><span>Modular, extensible y desacoplada</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">✓</div><span>Escalable horizontalmente</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">✓</div><span>Observabilidad integrada</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-check">✓</div><span>Múltiples casos de uso</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: CASOS DE USO -->
+        <div class="slide slide-9 content-slide print-slide">
+            <span class="slide-label">9 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">09</div>
+                <h1 class="slide-title">Casos de Uso</h1>
+                <p class="slide-subtitle">Impacto transversal en la organización</p>
+            </div>
+            <div class="use-cases-container">
+                <div class="use-cases-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🏆</div>
+                        <h4>Mejor Agente B2B</h4>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🔍</div>
+                        <h4>Auditoría S2S</h4>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">📋</div>
+                        <h4>Auditoría B2B</h4>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">✅</div>
+                        <h4>Auditoría Calidad B2C</h4>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🎯</div>
+                        <h4>Auditoría CCI B2B</h4>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🔧</div>
+                        <h4>Diagnóstico de Fallas</h4>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">📞</div>
+                        <h4>Auditoría Outbound B2C</h4>
+                    </div>
+                    <div class="use-case-card featured-case">
+                        <div class="use-case-icon">🎙️</div>
+                        <h4>Análisis Voz del Cliente</h4><span class="case-badge">Perú</span>
+                    </div>
+                </div>
+                <div class="impacts-section">
+                    <h3>Impactos Habilitados</h3>
+                    <div class="impacts-grid">
+                        <div class="impact-item"><span class="impact-bullet"></span>Comprensión profunda de la
+                            experiencia del cliente</div>
+                        <div class="impact-item"><span class="impact-bullet"></span>Detección temprana de fricciones o
+                            fallas</div>
+                        <div class="impact-item"><span class="impact-bullet"></span>Evaluación objetiva del desempeño de
+                            agentes</div>
+                        <div class="impact-item"><span class="impact-bullet"></span>Automatización de auditorías</div>
+                        <div class="impact-item"><span class="impact-bullet"></span>Insights transversales para
+                            gerencias</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 10: CASO DE ÉXITO PERÚ -->
+        <div class="slide slide-10 content-slide caso-exito-slide print-slide">
+            <span class="slide-label">10 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="header">
+                <div class="slide-number">10</div>
+                <h1 class="slide-title">Caso de Éxito</h1>
+                <p class="slide-subtitle">Análisis de Voz del Cliente - Perú</p>
+            </div>
+            <div class="caso-exito-container">
+                <div class="caso-hero">
+                    <span class="caso-flag">🇵🇪</span>
+                    <h2>Transcripción y categorización de 900 horas diarias</h2>
+                </div>
+                <div class="caso-comparison">
+                    <div class="caso-box proveedor">
+                        <div class="caso-box-header">
+                            <span class="caso-icon">🏢</span>
+                            <span class="caso-label">Proveedor Externo</span>
+                        </div>
+                        <div class="caso-price">
+                            <span class="caso-currency">USD</span>
+                            <span class="caso-amount">$159,000</span>
+                            <span class="caso-period">/ año</span>
+                        </div>
+                    </div>
+                    <div class="caso-vs">
+                        <div class="vs-circle">VS</div>
+                    </div>
+                    <div class="caso-box sinfonia">
+                        <div class="caso-box-header">
+                            <span class="caso-icon">🎵</span>
+                            <span class="caso-label">SinfonIA</span>
+                        </div>
+                        <div class="caso-price">
+                            <span class="caso-currency">USD</span>
+                            <span class="caso-amount">$38,000</span>
+                            <span class="caso-period">/ año</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="caso-stats">
+                    <div class="caso-stat highlight-stat">
+                        <div class="stat-number">76%</div>
+                        <div class="stat-text">Ahorro Total</div>
+                    </div>
+                    <div class="caso-stat">
+                        <div class="stat-number">$121K</div>
+                        <div class="stat-text">USD ahorrados/año</div>
+                    </div>
+                    <div class="caso-stat">
+                        <div class="stat-number">900</div>
+                        <div class="stat-text">horas diarias procesadas</div>
+                    </div>
+                </div>
+                <div class="caso-cta">
+                    <p>✨ <strong>Mismo resultado, fracción del costo</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: CONCLUSIÓN -->
+        <div class="slide slide-11 content-slide conclusion-slide print-slide">
+            <span class="slide-label">11 / 11</span>
+            <img src="https://images.seeklogo.com/logo-png/43/2/entel-logo-png_seeklogo-431295.png" alt="Entel Logo"
+                class="logo" />
+            <div class="bg-element bg-element-1"></div>
+            <div class="bg-element bg-element-2"></div>
+            <div class="bg-element bg-element-3"></div>
+            <div class="conclusion-content">
+                <div class="conclusion-header">
+                    <img src="logo-sinfonia.jpg" alt="SinfonIA Logo" class="sinfonia-logo-img"
+                        style="max-width: 350px; height: auto; margin-bottom: 15px;" />
+                    <p class="conclusion-subtitle">La fundación de Inteligencia Artificial en Entel</p>
+                </div>
+                <div class="conclusion-pillars">
+                    <div class="pillar">
+                        <div class="pillar-icon">📊</div>
+                        <h4>Analiza</h4>
+                        <p>Masivamente interacciones con clientes</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">💡</div>
+                        <h4>Obtiene</h4>
+                        <p>Insights accionables en tiempo real</p>
+                    </div>
+                    <div class="pillar">
+                        <div class="pillar-icon">🚀</div>
+                        <h4>Transforma</h4>
+                        <p>La experiencia del cliente y la operación</p>
+                    </div>
+                </div>
+                <div class="conclusion-cta">
+                    <p>Sintonizando con la experiencia de nuestros clientes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mensaje para el usuario
+        console.log('📄 Para guardar como PDF:');
+        console.log('1. Presiona Ctrl+P (o Cmd+P en Mac)');
+        console.log('2. Selecciona "Guardar como PDF" en Destino');
+        console.log('3. Asegúrate de que la orientación sea Horizontal/Landscape');
+        console.log('4. Haz clic en Guardar');
+    </script>
+</body>
+
+</html>
